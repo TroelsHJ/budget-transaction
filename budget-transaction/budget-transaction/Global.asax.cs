@@ -12,6 +12,7 @@ namespace budget_transaction
         protected void Application_Start()
         {
             GlobalConfiguration.Configure(WebApiConfig.Register);
+
         }
     }
 }

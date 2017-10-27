@@ -8,7 +8,7 @@ namespace budget_transaction
     public static class WebApiConfig
     {
         public static void Register(HttpConfiguration config)
-        {
+        {   
             // Web API configuration and services
 
             // Web API routes
@@ -16,7 +16,7 @@ namespace budget_transaction
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
+                routeTemplate: "api/{controller}/{action}",
                 defaults: new { id = RouteParameter.Optional }
             );
         }
