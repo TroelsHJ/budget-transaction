@@ -12,12 +12,23 @@ namespace budget_transaction.Controllers
     public class DefaultController : ApiController
     {
         [HttpGet]
-        public IHttpActionResult GetTransaction()
+        public IHttpActionResult ListTransaction()
         {
             List<Transaction> transactions = Database.SelectAllTransactions(true);
 
             return Ok(transactions);
         }
 
+        [Route("GeneralInformation/id")]
+        public IHttpActionResult GeneralInformation(int id)
+        {
+            Transaction d = Database.SelectTransaction(id, true);
+            return Ok(d);
+
+        }
+
+
     }
+
+
 }
