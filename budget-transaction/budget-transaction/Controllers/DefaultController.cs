@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using Newtonsoft.Json;
 
 
 namespace budget_transaction.Controllers
@@ -24,7 +25,10 @@ namespace budget_transaction.Controllers
         public IHttpActionResult GeneralInformation(int id)
         {
             Transaction d = Database.SelectTransaction(id, false);
-            return Ok(d);
+
+            string json = JsonConvert.SerializeObject(d);
+            
+            return Ok(json);
 
         }
 
