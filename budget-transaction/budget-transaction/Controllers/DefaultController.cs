@@ -19,10 +19,11 @@ namespace budget_transaction.Controllers
             return Ok(transactions);
         }
 
-        [Route("GeneralInformation/id")]
+        [Route("api/Default/GeneralInformation/{id}")]
+        [HttpGet]
         public IHttpActionResult GeneralInformation(int id)
         {
-            Transaction d = Database.SelectTransaction(id, true);
+            Transaction d = Database.SelectTransaction(id, false);
             return Ok(d);
 
         }
