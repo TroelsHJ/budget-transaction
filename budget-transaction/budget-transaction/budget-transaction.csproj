@@ -94,6 +94,7 @@
     </Compile>
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Transaction.cs" />
+    <Compile Include="MyWebSocket.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
