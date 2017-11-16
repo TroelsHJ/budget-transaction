@@ -11,7 +11,6 @@ namespace budget_transaction
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
-            MyWebSocket t = new MyWebSocket();
 
             // Web API routes
             config.MapHttpAttributeRoutes();

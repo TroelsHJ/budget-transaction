@@ -13,9 +13,6 @@ namespace budget_transaction.Controllers
     public class DefaultController : ApiController
     {
 
-
-
-
         [Route("api/Default/ListTransaction")]
         [HttpGet]
         public IHttpActionResult ListTransaction()

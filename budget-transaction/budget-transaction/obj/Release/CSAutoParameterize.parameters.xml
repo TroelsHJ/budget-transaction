@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <parameters>
   <parameter name="db-Web.config Connection String" description="db Connection String used in web.config by the application to access the database." defaultValue="Data Source=bbudgetmmanager.database.windows.net; Initial Catalog=BBudgetManager; User id=RRTP; Password=ABCD1234!;" tags="SqlConnectionString">
-    <parameterEntry kind="XmlFile" scope="C:\\Users\\Troels\\Desktop\\budget_manager\\transactionapi\\budget-transaction\\budget-transaction\\budget-transaction\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='db']/@connectionString" />
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Troels\\Desktop\\project\\transaction\\budget-transaction\\budget-transaction\\budget-transaction\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='db']/@connectionString" />
   </parameter>
 </parameters>
