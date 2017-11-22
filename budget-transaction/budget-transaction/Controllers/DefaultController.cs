@@ -63,7 +63,7 @@ namespace budget_transaction.Controllers
         }
         // SE DET HER!!! 
         // https://www.rabbitmq.com/tutorials/tutorial-four-dotnet.html
-        public static void Send(string[] args)
+        public static void Send(string message)
         {
             var factory = new ConnectionFactory()
             {
@@ -79,17 +79,14 @@ namespace budget_transaction.Controllers
             {
                 channel.QueueDeclare(queue: "graph_transaction", durable: false, exclusive: false, autoDelete: false);
 
-                var message = "Hello this is a test";
                 var body = Encoding.UTF8.GetBytes(message);
                 channel.BasicPublish(exchange: "Rapid", routingKey: "graph_transaction_result", basicProperties: null, body: body);
 
-                Console.WriteLine(" [x] Sent '{0}'", message);
+                //Console.WriteLine(" [x] Sent '{0}'", message);
             }
-
             //Console.WriteLine(" Press [enter] to exit.");
             //Console.ReadLine();
         }
-
 
         public static void Consume()
         {
@@ -109,15 +106,18 @@ namespace budget_transaction.Controllers
 
                 channel.QueueBind(queue: "graph_transaction", exchange: "Rapid", routingKey: "graph_transaction_request");
 
-
                 Console.WriteLine(" [*] Waiting for messages.");
 
                 var consumer = new EventingBasicConsumer(channel);
                 consumer.Received += (model, ea) =>
                 {
                     var body = ea.Body;
-                    var message = Encoding.UTF8.GetString(body);
-                    Console.WriteLine(" [x] Received {0}", message);
+                    string message = Encoding.UTF8.GetString(body);
+                    if (message.ToLower().Contains("listtransaction"))
+                    {
+                        List<Transaction> transactions = Database.SelectAllTransactions(true);
+                        Send(transactions.ToString());
+                    }
                 };
                 channel.BasicConsume(queue: "graph_transaction", consumer: consumer);
             }
