@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Http;
 using System.Web.Routing;
+using budget_transaction.Models;
 
 namespace budget_transaction
 {
@@ -12,7 +13,7 @@ namespace budget_transaction
         protected void Application_Start()
         {
             GlobalConfiguration.Configure(WebApiConfig.Register);
-
+            Receive t = new Receive();
         }
     }
 }
