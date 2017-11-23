@@ -71,6 +71,18 @@ namespace budget_transaction.Models
                         List<Transaction> transactions = Database.SelectAllTransactions(true);
                         Send(transactions.ToString());
                     }
+                    else if (message.ToLower().Contains("listtransaction;dato"))
+                    {
+                        string[] dates = message.Split(':');
+                        List <Transaction> transactions = Database.SelectAllTransactions(true, Convert.ToDateTime(dates[1]), Convert.ToDateTime(dates[2]));
+                        Send(transactions.ToString());
+                    }
+                    else
+                    {
+                        string[] id = message.Split(':');
+                        Transaction transaction = Database.SelectTransaction(Convert.ToInt16(id), false);
+                        Send(transaction.ToString());
+                    }
                 };
                 channel.BasicConsume(queue: "graph_transaction", consumer: consumer);
             }
